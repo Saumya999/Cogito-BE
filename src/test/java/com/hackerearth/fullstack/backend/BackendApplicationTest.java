@@ -35,7 +35,7 @@ public class BackendApplicationTest extends AbstractTest {
 
 		EventRequest eventRequest=new EventRequest();
 		eventRequest.setActorId(123);
-		eventRequest.setPublic(true);
+		eventRequest.setPublic(false);
 		eventRequest.setRepoId(12);
 		eventRequest.setType("some type");
 		Response<EventResponse,Integer> response=performRequest(eventRequest,EventResponse.class,addEventsUri);
@@ -62,7 +62,7 @@ public class BackendApplicationTest extends AbstractTest {
 				break;
 			}
 		}
-		assertTrue(found);
+		assertFalse(found);
 	}
 
 	final String getAllEventsForRepoUri="/api/v1/repos/12/events";
@@ -95,7 +95,7 @@ public class BackendApplicationTest extends AbstractTest {
 				found2=true;
 			}
 		}
-		assertTrue(found1);
+		assertFalse(found1);
 		assertTrue(found2);
 	}
 
